@@ -1,0 +1,308 @@
+
+    <title>Dashboard</title>
+
+{% extends 'main.html' %}
+{% block content%}
+<div class="container-fluid">
+    <style>
+
+  
+      .order-card {
+        color: rgb(255, 255, 255);
+      }
+  
+      .bg-c-blue {
+        background: #e6b20a;
+      }
+  
+      .bg-c-green {
+        background:#4C51BF;
+      }
+  
+      .bg-c-yellow {
+        background: #d44242;
+      }
+  
+      .bg-c-pink {
+        background: #663a30;
+      }
+  
+  
+      .card {
+
+        border: 1px solid rgb(7, 0, 0);
+        margin-bottom: 30px;
+
+      }
+  
+      .card .card-block {
+        padding: 25px;
+      }
+  
+      .order-card i {
+        font-size: 26px;
+      }
+  
+      .f-left {
+        float: left;
+      }
+  
+      .f-right {
+        float: right;
+      }
+      header {
+      left: 0px;
+      right: 0px;
+    }
+    </style>
+
+<br><br>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 col-xl-6">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h6 class="m-b-20 text-center "> <a href="{% url 'plans' %}" style="text-decoration: none;color:rgb(255, 255, 255);">Total Plans</a> </h6>
+         
+            <h2 class="text-right text-center"><span>{{total_plan}}</span></h2>
+      
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-6 col-xl-6">
+        <div class="card bg-c-green order-card text-center">
+          <div class="card-block">
+            <h6 class="m-b-20  text-center "><a href="{% url 'users' %}" style="text-decoration: none;color:rgb(255, 255, 255);">Total Clients</a> </h6>
+            <h2 class="text-center"><span>{{total_user}}</span></h2>
+            
+          </div>
+        </div>
+      </div>
+  
+<div class="container">
+  
+      <div class="row">
+
+      
+        <div class="col-sm-6 ">
+
+          <hr>
+          <div class="card card-body shadow-lg p-3 mb-5 bg-body rounded">
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createplan' %}">Create Plan</a>
+            <div class="table-responsive">
+              
+              <table class="table  table-hover table-sm ">
+                <thead class="table-dark">
+                  <br>
+                  <tr>
+                 
+                    <th scope="col">NAME</th>
+                    <th scope="col">COST</th>
+                    <th scope="col">DURATION</th>
+                    <th scope="col">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for plan in plans%}
+                  <tr>
+                    
+                    <td>{{plan.plan_name}}</td>
+                    <td>₹{{plan.cost}}</td>
+                    <td>{{plan.Duration}}</td>
+                    <td>
+                      <a href="{% url 'updateplan' plan.id %}" class="btn btn-warning mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                      </svg>
+                      Edit</a>
+                      <br><br>
+                        <form action="{% url 'deleteplan' plan.id %}" method="POST">
+                            {% csrf_token %}
+                            
+                            <button type="submit" class="btn btn-sm btn-danger  rounded" data-toggle="tooltip" title="users associated with this plan also be deleted ">Delete
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg></button>
+                        </form>
+                        <script>
+                          $(document).ready(function(){
+                            $('[data-toggle="tooltip"]').tooltip();   
+                          });
+                          </script>
+                        </td>
+                  {% endfor %}
+                </tbody>
+              
+              </table>
+              </div>
+          </div>
+        </div>
+      
+        <div class="col-sm-6">
+          <form class="d-flex" action="#" method="get">
+            {% csrf_token %}
+            <input class="form-control me-2" type="text" placeholder="Search User"  name="search_query" value="{{search_query}}" >
+            <button class="btn btn-outline-primary" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </form>
+          <hr>
+          <div class="card card-body">
+            <div class="table-responsive">
+        
+                  <table class="table  table-hover  table-sm ">
+                    <thead class="table-dark">
+                      <br>
+                      <tr>
+                        <th scope="col">NAME</th>
+                        <th scope="col">Number</th>
+                        
+    
+                        <th scope="col">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                      <tr>
+                        <td>{{user.user}}</td>
+                        <td>{{user.phoneno}}</td>
+                        
+                        
+                        <td><a href="{% url 'viewuser' user.user %}" class="btn btn-primary">
+                          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                          </svg>
+                          View</a></span>
+                            </td>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+       
+
+<hr>
+        <div class="col-sm">
+          <div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createuser'%}">Create Customer</a>
+            <div class="table-responsive">
+        
+                  <table class="table  table-hover  table-sm ">
+                    <thead class="table-dark">
+                      <br>
+                      <tr>
+                        <th scope="col">NAME</th>
+                        <th scope="col">Number</th>
+                        
+    
+                        <th scope="col">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in user%}
+                      <tr>
+                        <td>{{u.user}}</td>
+                        <td>{{u.phoneno}}</td>
+                        
+                        
+                        <td><a href="{% url 'viewuser' u.user %}" class="btn btn-primary">
+                          <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                          </svg>
+                          View</a></span>
+                            </td>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% if  user.has_other_pages %}
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item">
+                        {% if  user.has_previous%}
+                        <a class="page-link" href="?page={{user.previous_page_number}}" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        {% endif %}
+        
+                      {% for page in custom_range %}
+                      <li class="page-item"> 
+                      </li>
+                      {% if  page == user.number%} 
+                      <li class="page-item"><a class="btn page-link  btn-outline-primary" href="?page={{page}}">{{page}}</a></li>
+                      {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                      {% endif %}
+                     
+                      {% endfor %}
+                      <li class="page-item">
+                        {% if  user.has_next%}
+                        <a class="page-link" href="?page={{user.next_page_number}}" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        {% endif %}
+                    </ul>
+                  </nav>
+                  {% endif %}
+              </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+      </div>
+      
+      </div>
+
+
+
+
+    
+      
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+<br><br>
+
+
+
+
+{% endblock %}

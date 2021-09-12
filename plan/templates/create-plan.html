@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content%}
+{% load crispy_forms_tags %}  
+<style>
+.form-control{
+    text-transform: uppercase;
+
+  }
+</style>
+
+   
+    <div class="container-fluid  form-control">
+    <div class="container mt-3 mb-3">
+        <form method="post" class="form-control">
+            {% csrf_token %}
+          
+            {{form.plan_name|as_crispy_field}}
+            {{form.description|as_crispy_field}}
+            {{form.Duration|as_crispy_field}}
+            {{form.cost|as_crispy_field}}
+            <br>
+                <div class="d-grid gap-2 d-md-block">
+              <button type="submit" class="btn btn-outline-success btn-lg mb-4 form-control">Submit</button>
+              </div>
+            </form>
+        </div>
+
+    
+    </div>
+
+
+{% endblock%}

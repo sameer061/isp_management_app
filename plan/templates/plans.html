@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{% block content%}
+<div class="container-fluid">
+  <style>
+
+
+    .order-card {
+      color: rgb(0, 0, 0);
+    }
+
+    .bg-c-blue {
+      background: #e6b20a;
+    }
+
+    .bg-c-green {
+      background:#4C51BF;
+    }
+
+    .bg-c-yellow {
+      background: #d44242;
+    }
+
+    .bg-c-pink {
+      background: #663a30;
+    }
+
+
+    .card {
+      
+      -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      border: 1px solid black;
+      margin-bottom: 30px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card .card-block {
+      padding: 25px;
+    }
+
+    .order-card i {
+      font-size: 26px;
+    }
+
+    .f-left {
+      float: left;
+    }
+
+    .f-right {
+      float: right;
+    }
+    header {
+    left: 0px;
+    right: 0px;
+  }
+  </style>
+<br><br>
+
+<div class="card card-body">
+  <a class="btn btn-primary  btn-sm btn-block" href="{% url 'dashboard' %}">Total Plan</a>
+  <br>
+  <div class="table-responsive">
+    <table class="table  table-hover table-sm ">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">NAME</th>
+          <th scope="col">COST</th>
+          <th scope="col">DURATION</th>
+          <th scope="col">DESCRIPTION</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for plan in plans%}
+        <tr>
+          
+          <td>{{plan.plan_name}}</td>
+          <td>₹{{plan.cost}}</td>
+          <td>{{plan.Duration}}</td>
+          <td>{{plan.description}}</td>
+
+        {% endfor %}
+      </tbody>
+    
+    </table>
+    </div>
+</div>
+</div>
+{% endblock %}

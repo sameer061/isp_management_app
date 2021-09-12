@@ -1,0 +1,210 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content%}
+<div class="container-fluid">
+  <style>
+
+
+    .order-card {
+      color: rgb(167, 20, 20);
+    }
+
+    .bg-c-blue {
+      background: #e6b20a;
+    }
+
+    .bg-c-green {
+      background:#e673e6;
+    }
+
+    .bg-c-yellow {
+      background: #d44242;
+    }
+
+    .bg-c-pink {
+      background: #663a30;
+    }
+
+
+    .card {
+      
+      -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+      border: 1px solid black;
+      margin-bottom: 30px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card .card-block {
+      padding: 25px;
+    }
+
+    .order-card i {
+      font-size: 26px;
+    }
+
+    .f-left {
+      float: left;
+    }
+
+    .f-right {
+      float: right;
+    }
+    header {
+    left: 0px;
+    right: 0px;
+  }
+  #button1{
+    width: 300px;
+    height: 40px;
+    
+    }
+    #button2{
+    width: 300px;
+    height: 40px;
+    }
+  </style>
+ 
+    <br><br>
+    <div class="container">
+      <div class="card card-body">
+        <br>
+        <div class="table-responsive">
+          <form class="d-flex" action="#" method="get">
+            {% csrf_token %}
+            <input class="form-control me-2" type="text" placeholder="Search User" aria-label="Search" name="search_query" value="{{search_query}}" >
+            <button class="btn btn-outline-primary" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+              
+
+          </form>
+          <br>
+          <table class="table  table-hover table-sm ">
+            {% if user %}
+            <thead class="table-dark">        
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">Email</th>
+                <th scope="col">Number</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            {% endif %}
+            <tbody>
+              {% for user in users%}
+            <tr>
+
+              <td>{{user.user}}</td>
+
+              <td>{{user.email}}</td>
+
+              <td>{{user.phoneno}}</td>
+        
+              <td><a href="{% url 'updateuser' user.user %}"class="btn btn-warning rounded" id=" #button1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+                Edit</a>
+               <br><br>
+                <form action="{% url 'deleteuser' user.id %}" method="POST" >
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-sm btn-danger rounded mb-3" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>Delete
+                    </button>
+                  </form>
+                  </td>
+            {% endfor %}          
+          </table>
+          </div>
+      </div>
+      </div>
+</div>
+
+      <div class="container">
+      <div class="card card-body">
+        <a class="btn btn-primary  btn-sm btn-block" href="{% url 'dashboard' %}">Total Users</a>
+        <br>
+        <div class="table-responsive">
+          <br>
+          <table class="table  table-hover table-sm ">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for u in user%}
+            <tr>
+              <td>{{u.user}}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.phoneno}}</td>
+              <td><a href="{% url 'updateuser' u.user %}"class="btn btn-warning rounded" id=" #button1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+                Edit</a>
+               <br><br>
+                <form action="{% url 'deleteuser' u.id %}" method="POST" >
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-sm btn-danger rounded mb-3" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>Delete
+                    </button>
+                  </form>
+                  </td>
+            {% endfor %}          
+          </table>
+          {% if  user.has_other_pages %}
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                {% if  user.has_previous%}
+                <a class="page-link" href="?page={{user.previous_page_number}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+
+              {% for page in custom_range %}
+              <li class="page-item"> 
+              </li>
+              {% if  page == user.number%} 
+              <li class="page-item"><a class="page-link  btn btn-primary" href="?page={{page}}">{{page}}</a></li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+              {% endif %}
+             
+              {% endfor %}
+              <li class="page-item">
+                {% if  user.has_next%}
+                <a class="page-link" href="?page={{user.next_page_number}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+                {% endif %}
+            </ul>
+          </nav>
+          {% endif %}
+          </div>
+      </div>
+      </div>
+      
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'main.html' %}
+{% block content%}
+
+
+<style>
+body {
+  color: #363636
+}
+.student-profile .card {
+  border-radius: 10px;
+  background-color: rgb(241, 241, 241);
+}
+.student-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 5px auto;
+  border: 5px solid rgb(70, 68, 68);
+  border-radius: 50%;
+}
+.student-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.student-profile .card  {
+  font-size: 16px;
+  color: #000;
+}
+.student-profile .table th,
+.student-profile .table td {
+    font-size: 14px;
+    padding: 5px 10px;
+    color: #000;
+}
+</style>
+  <div class="student-profile py-4">
+    <div class="container">
+ 
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent text-center">
+              {% for u in user %}
+              {% if  u.profile_image %}
+              <img src="{{u.profile_image.url}}" alt="" class="img-fluid profile_img" >
+              {% endif %}
+              <h3>{{u.first_name}} {{u.last_name}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="mb-0"><strong class="pr-1">Username:</strong>{{u.user}}</p>
+    
+              <p class="mb-0"><strong class="pr-1">Firstname:</strong>{{u.first_name}} </p>
+
+              <p class="mb-0"><strong class="pr-1">Lastname:</strong>{{u.last_name}}</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered table-responsive">
+                {% if u.email %}
+                <tr>
+                  <th width="30%">Email</th>
+                  <td width="2%">:</td>
+                  <td>{{u.email}}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <th width="30%">Contact</th>
+                  <td width="2%">:</td>
+                  <td> {{u.phoneno}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Plan</th>
+                  <td width="2%">:</td>
+                  <td>{{u.current_plan}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Time</th>
+                  <td width="2%">:</td>
+                  <td>{{u.start_date}} to {{u.end_date}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Address</th>
+                  <td width="2%">:</td>
+                  <td>{{u.address}}</td>
+                </tr>
+                <tr>
+                  {% if u.id_proof %}
+                  <th width="40%"> Id proof</th>
+                  <td width="3%">:</td>
+                  <td><a href="{{u.id_proof.url}}" class="btn btn-outline-primary" download><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                  </svg>   Download</a></td>
+                </tr>
+                {% endif %}
+                
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <a href="/" class="btn btn-danger btn-lg ">Back to Home</a>
+
+
+      
+
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}
