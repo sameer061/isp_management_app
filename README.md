@@ -4,7 +4,7 @@ django project for Internet service provider management
 $ pip install --upgrade virtualenv
 $ virtualenv env
 $ source env/bin/activate
-(env) $ pip install requirements.txt
+(env) $ pip install -r requirements.txt
 (env) $ python manaage.py makemigrations
 (env) $ python manage.py createsuperuser
 (env) $ python manage.py runserver
