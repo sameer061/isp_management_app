@@ -14,8 +14,7 @@ class Plan(models.Model):
     Duration = models.TextField(choices=DURATION,default='')
     cost = models.PositiveIntegerField(blank=False)
 
-    def __str__(self):
-        return str(self.plan_name)
+
 
 class Userprofile(models.Model):
     user = models.CharField(max_length=200,unique=True)
@@ -32,5 +31,4 @@ class Userprofile(models.Model):
   
  
 
-    def __str__(self):
-        return str(self.user)
+

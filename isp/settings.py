@@ -141,5 +141,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     messages.WARNING : 'danger',
+    messages.ERROR :'warning'
   
 }
