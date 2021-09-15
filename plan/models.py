@@ -13,6 +13,8 @@ class Plan(models.Model):
     description = models.TextField(max_length=500,null=True,blank=True,help_text="enter details")
     Duration = models.TextField(choices=DURATION,default='')
     cost = models.PositiveIntegerField(blank=False)
+    def __str__(self):
+        return str(self.plan_name)
 
 
 
