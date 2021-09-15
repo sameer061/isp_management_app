@@ -64,7 +64,7 @@
           <button type="button" class="btn btn-dark" data-dismiss="modal">OK</button>
         </div>
 
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
   $("#id_start_date, #id_end_date").datepicker();
 
@@ -72,22 +72,28 @@
     var startDate = document.getElementById("id_start_date").value;
     var endDate = document.getElementById("id_end_date").value;
     if ((Date.parse(endDate) <= Date.parse(startDate))) {
-      $('#myModal').modal('show')
+     swal("invalid range", "ENTER VALID START DATE","warning");
         document.getElementById("id_start_date").value = "";
     }
   
 });
+
+
+
 
   $("#id_end_date").change(function () {
       var startDate = document.getElementById("id_start_date").value;
       var endDate = document.getElementById("id_end_date").value;
    
       if ((Date.parse(endDate) <= Date.parse(startDate))) {
-        $('#myModal').modal('show')
+       swal("invalid range", "ENTER VALID END DATE","warning");
           document.getElementById("id_end_date").value = "";
       }
     
   });
+
+
+
 </script>
 <script>
         $(document).ready(function(){
