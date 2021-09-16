@@ -23,7 +23,7 @@ def login_page(request):
             messages.error(request, "user name does not exist")
 
         user = authenticate(request, username=username, password=password)
-        messages.success(request,"Login successfully!!" )
+        
         
         if user is not None:
             login(request, user)
