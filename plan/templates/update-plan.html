@@ -2,16 +2,25 @@
 {% block content%}
 {% load crispy_forms_tags %}  
 <style>
-.form-control{
+  .form-control{
     text-transform: uppercase;
+   
 
   }
+
+ .container{
+  background-color:#212529;
+  color:white;
+  border-radius: 10px;
+  
+ }
+
 </style>
 
    
-    <div class="container-fluid  form-control">
-    <div class="container mt-3 mb-3">
-        <form method="post" class="form-control">
+<div class="form-control">
+  <div class="container mt-4 pt-4 mb-4">
+        <form method="post">
             {% csrf_token %}
           
             {{form.plan_name|as_crispy_field}}

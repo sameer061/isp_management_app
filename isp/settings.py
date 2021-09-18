@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'plan',
     'crispy_forms',
     'phonenumber_field',
+    'import_export',
 
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -6,17 +6,19 @@
 <div class="container-fluid">
     <style>
 
-  
+      .container{
+        color: white;
+      }
       .order-card {
         color: rgb(255, 255, 255);
       }
   
       .bg-c-blue {
-        background: #e6b20a;
+        background: whitesmoke;
       }
   
       .bg-c-green {
-        background:#4C51BF;
+        background:#007bff;
       }
   
       .bg-c-yellow {
@@ -27,9 +29,15 @@
         background: #663a30;
       }
   
-  
+  .card#user{
+    background:#007bff;
+  }
+  .card#plan{
+    background: whitesmoke;
+  }
       .card {
-
+        
+        background-color:#31363b;
         border: 1px solid rgb(7, 0, 0);
         margin-bottom: 30px;
 
@@ -37,6 +45,7 @@
   
       .card .card-block {
         padding: 25px;
+    
       }
   
       .order-card i {
@@ -62,18 +71,18 @@
 
     <div class="row">
       <div class="col-md-6 col-xl-6">
-        <div class="card bg-c-blue order-card">
+        <div class="card bg-c-blue order-card" id="plan">
           <div class="card-block">
-            <h6 class="m-b-20 text-center "> <a href="{% url 'plans' %}" style="text-decoration: none;color:rgb(255, 255, 255);">Total Plans</a> </h6>
+            <h6 class="m-b-20 text-center "> <a href="{% url 'plans' %}" style="text-decoration: none;color:rgb(0, 0, 0); ">Total Plans</a> </h6>
          
-            <h2 class="text-right text-center"><span>{{total_plan}}</span></h2>
+            <h2 class="text-right text-center"><span style="color:black;">{{total_plan}}</span></h2>
       
           </div>
         </div>
       </div>
   
       <div class="col-md-6 col-xl-6">
-        <div class="card bg-c-green order-card text-center">
+        <div class="card bg-c-green order-card text-center" id="user">
           <div class="card-block">
             <h6 class="m-b-20  text-center "><a href="{% url 'users' %}" style="text-decoration: none;color:rgb(255, 255, 255);">Total Clients</a> </h6>
             <h2 class="text-center"><span>{{total_user}}</span></h2>
@@ -94,8 +103,8 @@
             <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createplan' %}">Create Plan</a>
             <div class="table-responsive">
               
-              <table class="table  table-hover table-sm ">
-                <thead class="table-dark">
+              <table class="table  table-dark table-hover table-sm ">
+                <thead class="thead-dark">
                   <br>
                   <tr>
                  
@@ -157,8 +166,8 @@
           <div class="card card-body">
             <div class="table-responsive">
         
-                  <table class="table  table-hover  table-sm ">
-                    <thead class="table-dark">
+                  <table class="table  table-hover  table-dark table-sm ">
+                    <thead class="thead-dark">
                       <br>
                       <tr>
                         <th scope="col">NAME</th>
@@ -196,8 +205,8 @@
             <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createuser'%}">Create Customer</a>
             <div class="table-responsive">
         
-                  <table class="table  table-hover  table-sm ">
-                    <thead class="table-dark">
+                  <table class="table  table-hover  table-sm table-dark">
+                    <thead class="thead-dark">
                       <br>
                       <tr>
                         <th scope="col">NAME</th>

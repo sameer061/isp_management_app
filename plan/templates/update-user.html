@@ -3,22 +3,23 @@
 <style>
   .form-control{
     text-transform: uppercase;
-    
+   
 
   }
- .container-fluid  form-control{
-  box-shadow: 10px 5px 10px 5px gray;
- }
- .shadow{
-  box-shadow: 10px 5px 10px 5px gray;
+
+ .container{
+  background-color:#212529;
+  color:white;
+  border-radius: 10px;
+  
  }
 
 </style>
 {% load crispy_forms_tags %}  
-<div class="shadow">
-<div class="container-fluid  form-control  ">
-    <div class="container mt-3 mb-3 ">
-        <form method="post" enctype="multipart/form-data" class="form-control">
+
+<div class="form-control">
+    <div class="container mt-4 pt-4 mb-4">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.user|as_crispy_field}}
             {{form.first_name|as_crispy_field}}
@@ -43,7 +44,8 @@
     </div>
 </div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
   $("#id_start_date, #id_end_date").datepicker();
 
@@ -79,7 +81,5 @@
           $('[data-toggle="tooltip"]').tooltip();   
         });
         </script>
-
-
 
 {% endblock%}

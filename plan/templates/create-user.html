@@ -3,22 +3,23 @@
 <style>
   .form-control{
     text-transform: uppercase;
-    
+   
 
   }
- .container-fluid  form-control{
-  box-shadow: 10px 5px 10px 5px gray;
- }
- .shadow{
-  box-shadow: 10px 5px 10px 5px gray;
+
+ .container{
+  background-color:#212529;
+  color:white;
+  border-radius: 10px;
+  
  }
 
 </style>
 {% load crispy_forms_tags %}  
-<div class="shadow">
-<div class="container-fluid  form-control  ">
-    <div class="container mt-3 mb-3 ">
-        <form method="post" enctype="multipart/form-data" class="form-control">
+
+<div class="form-control">
+    <div class="container mt-4 pt-4 mb-4">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.user|as_crispy_field}}
             {{form.first_name|as_crispy_field}}
@@ -43,26 +44,6 @@
     </div>
 </div>
 
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title text-danger">INVALID RANGE</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body text-center">
-          <strong> END DATE SHOULD BE GREATER THAN START DATE</strong>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-dismiss="modal">OK</button>
-        </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>

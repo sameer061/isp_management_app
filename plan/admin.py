@@ -1,10 +1,14 @@
 from django.contrib import admin
 from .models import Plan,Userprofile
+from import_export.admin import  ImportExportModelAdmin
 # Register your models here.
+class importexport(ImportExportModelAdmin,admin.ModelAdmin):
+    pass
+
 admin.site.register(Plan)
 
 @admin.register(Userprofile)
-class USER(admin.ModelAdmin):
+class USER(importexport):
     list_display = (
         'user', 
         'first_name',
@@ -12,6 +16,7 @@ class USER(admin.ModelAdmin):
         'address',
         'email',
         'profile_image',
+        'current_plan',
         'phoneno',
         'start_date',
         'end_date'

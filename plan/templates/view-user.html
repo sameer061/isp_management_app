@@ -4,36 +4,37 @@
 
 <style>
 body {
-  color: #363636
+  color: #ffffff
 }
-.student-profile .card {
+.user-profile .card {
   border-radius: 10px;
-  background-color: rgb(241, 241, 241);
+  background-color: #31363b;
 }
-.student-profile .card .card-header .profile_img {
+.user-profile .card .card-header .profile_img {
   width: 150px;
   height: 150px;
   object-fit: cover;
   margin: 5px auto;
-  border: 5px solid rgb(70, 68, 68);
+  border: 5px solid rgb(15, 14, 14);
   border-radius: 50%;
 }
-.student-profile .card h3 {
+.user-profile .card h3 {
   font-size: 20px;
   font-weight: 700;
 }
-.student-profile .card  {
+.user-profile .card  {
   font-size: 16px;
-  color: #000;
+  color: rgb(255, 255, 255);
 }
-.student-profile .table th,
-.student-profile .table td {
+.user-profile .table th,
+.user-profile .table td {
     font-size: 14px;
     padding: 5px 10px;
-    color: #000;
+    color: hsl(0, 0%, 100%);
+    background-color:#31363b;
 }
 </style>
-  <div class="student-profile py-4">
+  <div class="user-profile py-4 ">
     <div class="container">
  
       <div class="row">
@@ -62,7 +63,7 @@ body {
               <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
             </div>
             <div class="card-body pt-0">
-              <table class="table table-bordered table-responsive">
+              <table class="table table-bordered table-dark table-hover table-responsive">
                 {% if u.email %}
                 <tr>
                   <th width="30%">Email</th>
