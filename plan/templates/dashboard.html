@@ -171,7 +171,7 @@
                       <br>
                       <tr>
                         <th scope="col">NAME</th>
-                        <th scope="col">Number</th>
+                        <th scope="col">NUMBER</th>
                         
     
                         <th scope="col">ACTION</th>
@@ -210,7 +210,7 @@
                       <br>
                       <tr>
                         <th scope="col">NAME</th>
-                        <th scope="col">Number</th>
+                        <th scope="col">NUMBER</th>
                         
     
                         <th scope="col">ACTION</th>
@@ -234,20 +234,20 @@
                     </tbody>
                   </table>
                   {% if  user.has_other_pages %}
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item">
+                  <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center ">
+                      <li class="page-item ">
                         {% if  user.has_previous%}
-                        <a class="page-link" href="?page={{user.previous_page_number}}" aria-label="Previous">
+                        <a class="page-link " href="?page={{user.previous_page_number}}" aria-label="Previous">
                           <span aria-hidden="true">&laquo;</span>
                         </a>
                         {% endif %}
         
                       {% for page in custom_range %}
-                      <li class="page-item"> 
+                      <li class="page-item "> 
                       </li>
                       {% if  page == user.number%} 
-                      <li class="page-item"><a class="btn page-link  btn-outline-primary" href="?page={{page}}">{{page}}</a></li>
+                      <li class="page-item"><a class="btn page-link  bg-dark" href="?page={{page}}">{{page}}</a></li>
                       {% else %}
                       <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
                       {% endif %}

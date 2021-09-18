@@ -1,3 +1,4 @@
+from django.core.files.storage import default_storage
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 import uuid
@@ -25,7 +26,7 @@ class Userprofile(models.Model):
     email=models.EmailField(max_length=200,blank=True,null=True)
     address = models.TextField()
     profile_image=models.ImageField(blank=True,null=True, default='images/demo.jpg', upload_to='profiles')
-    phoneno = PhoneNumberField(null=False, blank=False, unique=True)
+    phoneno = PhoneNumberField(null=False, blank=False, unique=True , default='+91')
     id_proof = models.FileField(upload_to='id_proof', blank=True, null=True, )
     current_plan = models.ForeignKey(Plan, on_delete=models.CASCADE, default='')
     start_date = models.DateField(null=True)
