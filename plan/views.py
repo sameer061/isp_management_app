@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.contrib import  messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate,logout
@@ -29,7 +29,7 @@ def login_page(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            messages.error(request, "Incorrect credentials")
+            messages.error(request, "Incorrect Password")
 
     return render(request, 'login.html')
 
@@ -62,13 +62,13 @@ def dashboard(request):
         page = paginator.num_pages
         user = paginator.page(page)
 
-    leftindex = (int (page) -  1)
-    if leftindex < 1 :
-        leftindex = 1
-    rightindex = (int (page) + 2)
-    if rightindex >paginator.num_pages:
-        rightindex = paginator.num_pages+1
-    custom_range = range(leftindex, rightindex)
+    left = (int (page) -  1)
+    if left < 1 :
+        left = 1
+    right = (int (page) + 2)
+    if right >paginator.num_pages:
+        right = paginator.num_pages+1
+    custom_range = range(left, right)
     total_plan = plans.count()
     context = {'plans':plans, 
     'total_plan':total_plan,
@@ -96,7 +96,7 @@ def create_plan(request):
         if form.is_valid():
             form.save()
             messages.success(request,"plan added successfully")
-            return HttpResponseRedirect('/')
+            return redirect('/')
     else:
         form = planform()
     return render(request,"create-plan.html",{'form':form})
@@ -107,7 +107,7 @@ def delete_plan(request,pk):
         pi = Plan.objects.get(id=pk)
         pi.delete()
         messages.warning(request, 'plan deleted successfully')
-        return HttpResponseRedirect('/')
+        return redirect('/')
     else:
         messages.error(request,'Oopse something went wrong!!!')
 
@@ -120,7 +120,7 @@ def update_plan(request,pk):
         if form.is_valid():
             form.save()
             messages.info(request,'Plan updated successfully')
-            return HttpResponseRedirect('/')
+            return redirect('/')
     context = {'form':form}
 
 
@@ -148,13 +148,13 @@ def users(request):
         page = paginator.num_pages
         user = paginator.page(page)
 
-    leftindex = (int (page) -  1)
-    if leftindex < 1 :
-        leftindex = 1
-    rightindex = (int (page) + 2)
-    if rightindex >paginator.num_pages:
-        rightindex = paginator.num_pages+1
-    custom_range = range(leftindex, rightindex)
+    left = (int (page) -  1)
+    if left < 1 :
+        left = 1
+    right = (int (page) + 2)
+    if right >paginator.num_pages:
+        right = paginator.num_pages+1
+    custom_range = range(left, right)
     
 
 
@@ -169,7 +169,7 @@ def create_user(request):
         if form.is_valid():
             form.save()
             messages.success(request,'user added successfully')
-            return HttpResponseRedirect('/')
+            return redirect('/')
     else:
         form = clientform()
         
@@ -184,7 +184,7 @@ def edit_user(request, pk):
         if form.is_valid():
             form.save()
             messages.info(request,'User updated successfully')
-            return HttpResponseRedirect('/users')
+            return redirect('/users')
     
 
     return render(request,'update-user.html',{'form':form})
@@ -195,7 +195,7 @@ def delete_user(request,pk):
         pi = Userprofile.objects.get(pk=pk)
         pi.delete()
         messages.warning(request, 'User deleted successfully')
-        return HttpResponseRedirect('/users')
+        return redirect('/users')
     else:
         messages.error(request,"oops something went wrong!!!")
 
