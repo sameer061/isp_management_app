@@ -5,7 +5,15 @@ from import_export.admin import  ImportExportModelAdmin
 class importexport(ImportExportModelAdmin,admin.ModelAdmin):
     pass
 
-admin.site.register(Plan)
+@admin.register(Plan)
+class PLAN(importexport):
+    list_display = (
+        'plan_name',
+        'description',
+        'Duration',
+        'cost'
+
+    )
 
 @admin.register(Userprofile)
 class USER(importexport):
