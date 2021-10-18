@@ -2,6 +2,7 @@
     <title>Dashboard</title>
 
 {% extends 'main.html' %}
+{% load static %}
 {% block content%}
 <div class="container-fluid">
     <style>
@@ -73,7 +74,7 @@
       <div class="col-md-6 col-xl-6">
         <div class="card bg-c-blue order-card" id="plan">
           <div class="card-block">
-            <img src="https://cdn-icons.flaticon.com/png/512/5237/premium/5237894.png?token=exp=1634540803~hmac=e796317a3a89f0a5fd4429c84c067672" width="50" height="50" class=" img-fluid  rounded float-left" alt="" >
+            <img src="{% static 'images/plan.png' %}" width="50" height="50" class=" img-fluid  rounded float-left" alt="" >
             <h6 class="m-b-20 text-center "> <a href="{% url 'plans' %}" style="text-decoration: none;color:rgb(0, 0, 0); ">Total Plans</a> </h6>
             <h2 class="text-right text-center "><span style="color:black;">{{total_plan}}</span></h2>
       
