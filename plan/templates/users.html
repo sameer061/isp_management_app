@@ -44,7 +44,7 @@
         <div class="table-responsive">
           <form class="d-flex" action="#" method="get">
             {% csrf_token %}
-            <input class="form-control me-2" type="text" placeholder="Search User" aria-label="Search" name="search_query" value="{{search_query}}" >
+            <input class="form-control me-2" type="text" placeholder="Search Client" aria-label="Search" name="search_query" value="{{search_query}}" >
             <button class="btn btn-outline-primary" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -100,7 +100,7 @@
 
       <div class="container">
       <div class="card card-body">
-        <a class="btn btn-primary  btn-sm btn-block" href="{% url 'dashboard' %}">Total Users</a>
+        <a class="btn btn-primary  btn-sm btn-block" href="{% url 'dashboard' %}">Total Clients</a>
         <br>
         <div class="table-responsive">
           <br>

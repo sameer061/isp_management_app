@@ -177,14 +177,17 @@ def create_user(request):
 
 @login_required(login_url="login")
 def edit_user(request, pk):
-    user = Userprofile.objects.get(user=pk)
-    form = clientform(instance=user)
-    if request.method == 'POST':
-        form = clientform(request.POST,  request.FILES, instance=user )
-        if form.is_valid():
-            form.save()
+    try:
+        user = Userprofile.objects.get(user=pk)
+        form = clientform(instance=user)
+        if request.method == 'POST':
+            form = clientform(request.POST,  request.FILES, instance=user )
+            if form.is_valid():
+                form.save()
             messages.info(request,'User updated successfully')
             return redirect('/users')
+    except :
+        print("somthing went wrong")
     
 
     return render(request,'update-user.html',{'form':form})

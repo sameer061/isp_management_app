@@ -73,9 +73,9 @@
       <div class="col-md-6 col-xl-6">
         <div class="card bg-c-blue order-card" id="plan">
           <div class="card-block">
+            <img src="https://cdn-icons.flaticon.com/png/512/5237/premium/5237894.png?token=exp=1634540803~hmac=e796317a3a89f0a5fd4429c84c067672" width="50" height="50" class=" img-fluid  rounded float-left" alt="" >
             <h6 class="m-b-20 text-center "> <a href="{% url 'plans' %}" style="text-decoration: none;color:rgb(0, 0, 0); ">Total Plans</a> </h6>
-         
-            <h2 class="text-right text-center"><span style="color:black;">{{total_plan}}</span></h2>
+            <h2 class="text-right text-center "><span style="color:black;">{{total_plan}}</span></h2>
       
           </div>
         </div>
@@ -84,6 +84,7 @@
       <div class="col-md-6 col-xl-6">
         <div class="card bg-c-green order-card text-center" id="user">
           <div class="card-block">
+            <img src="https://cdn-icons.flaticon.com/png/512/3211/premium/3211647.png?token=exp=1634543373~hmac=f8d304ebaa61724a54ce6f0e53a6707f" width="50" height="50" class=" img-fluid  rounded float-left" alt="" >
             <h6 class="m-b-20  text-center "><a href="{% url 'users' %}" style="text-decoration: none;color:rgb(255, 255, 255);">Total Clients</a> </h6>
             <h2 class="text-center"><span>{{total_user}}</span></h2>
             
@@ -155,7 +156,7 @@
         <div class="col-sm-6">
           <form class="d-flex" action="#" method="get">
             {% csrf_token %}
-            <input class="form-control me-2" type="text" placeholder="Search User"  name="search_query" value="{{search_query}}" >
+            <input class="form-control  d-inline-flex" type="text" placeholder="Search Client"  name="search_query" value="{{search_query}}" >
             <button class="btn btn-outline-primary" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -202,7 +203,7 @@
 <hr>
         <div class="col-sm">
           <div class="card card-body">
-            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createuser'%}">Create Customer</a>
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createuser'%}">Create Client</a>
             <div class="table-responsive">
         
                   <table class="table  table-hover  table-sm table-dark">

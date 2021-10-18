@@ -8,10 +8,10 @@ class importexport(ImportExportModelAdmin,admin.ModelAdmin):
 @admin.register(Plan)
 class PLAN(importexport):
     list_display = (
-        'plan_name',
+       'plan_name',
         'description',
         'Duration',
-        'cost'
+        'cost',
 
     )
 

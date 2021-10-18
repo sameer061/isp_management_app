@@ -18,7 +18,6 @@ class Plan(models.Model):
         return str(self.plan_name)
 
 
-
 class Userprofile(models.Model):
     user = models.CharField(max_length=200,unique=True)
     first_name = models.CharField(max_length=20)
