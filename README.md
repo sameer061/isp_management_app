@@ -29,7 +29,7 @@ Running server
 
 ## Screenshots
 ![Screenshot 2021-09-26 131503](https://user-images.githubusercontent.com/70535612/134798892-1c9247a2-60be-432c-b454-c0256a15a900.png)
-![dashboard](https://user-images.githubusercontent.com/70535612/134800187-7efbde22-0bc9-4388-aad2-1d3fa585d135.png)
+![dashboard]![dashboard](https://user-images.githubusercontent.com/70535612/157268348-d8e495c4-73b3-4b23-bb5c-508ae98b15d5.png)
 ![plan creation form](https://user-images.githubusercontent.com/70535612/134798953-42e318b4-448a-40e9-9144-ffd6d589e8ba.png)
 ![user creation](https://user-images.githubusercontent.com/70535612/134798959-d77670c4-3401-43b7-a16f-2a5b468be34a.png)
 ![curd ](https://user-images.githubusercontent.com/70535612/134800291-53370abb-d14d-499e-8b2e-6d2beeb9ca0f.png)
